@@ -664,6 +664,12 @@
         /* ── CUSTOM CURSOR ── */
         body { cursor: none; }
 
+        @media (hover: none) {
+            body { cursor: auto; }
+            #cursor { display: none; }
+            a, button, .skill-card, .project-card, .project-placeholder, .nav-pill a { cursor: auto; }
+        }
+
         #cursor {
             width: 12px;
             height: 12px;
