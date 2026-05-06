@@ -421,13 +421,13 @@
             align-items: center;
             gap: 6px;
             background: #5DCAA5;
-            border: 1.5px solid var(--black);
+            border: 1.5px solid #3aad87;
             border-radius: 999px;
             padding: 3px 10px;
             font-size: 11px;
             font-weight: 700;
             color: var(--black);
-            box-shadow: 2px 2px 0px var(--black);
+            box-shadow: 2px 2px 0px #3aad87;
             margin-left: 12px;
         }
 
@@ -520,7 +520,7 @@
 
         .fake-error-close {
             background: #e53e3e;
-            border: 2px solid #fff;
+            border: 2px solid #c53030;
             border-radius: 999px;
             padding: 10px 24px;
             font-size: 14px;
@@ -528,7 +528,7 @@
             color: #fff;
             cursor: pointer;
             font-family: var(--font);
-            box-shadow: 3px 3px 0px #fff;
+            box-shadow: 3px 3px 0px #c53030;
             transition: transform 0.15s, box-shadow 0.15s;
         }
 
@@ -806,7 +806,7 @@
         [data-theme="dark"] .cta-left p { color: var(--black); }
         [data-theme="dark"] .project-body { border-color: #30363D; background: #1C2333; }
         [data-theme="dark"] footer { border-top-color: #30363D; }
-        [data-theme="dark"] .badge-live, [data-theme="dark"] .live-badge { background: #4D9EFF; border-color: #30363D; box-shadow: 2px 2px 0px #30363D; color: #ffffff; }
+        [data-theme="dark"] .badge-live, [data-theme="dark"] .live-badge { background: #4D9EFF; border-color: #2563eb; box-shadow: 2px 2px 0px #2563eb; color: #ffffff; }
         [data-theme="dark"] .theme-toggle:active { box-shadow: 0px 0px 0px transparent; }
         [data-theme="dark"] .hero-badge { color: #0D1117; }
         [data-theme="dark"] .skill-card:hover { box-shadow: 0px 0px 0px transparent; }
@@ -843,7 +843,7 @@
         <div class="hero-badge">Web Designer &amp; Developer</div>
         <h1 id="hero-name" style="user-select:none;-webkit-user-select:none;">Simone<br>Borgiani</h1>
         <p class="hero-sub">
-            Trasformo idee in prodotti digitali, dal <span style="color:var(--orange)">concept visivo</span> al <span style="color:var(--orange)">codice</span>.
+            Trasformo idee in prodotti digitali, dal <span style="color:var(--orange)">concept visivo</span> al <span style="color:var(--orange)">codice</span>
         </p>
         <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:500;color:#888;margin-top:16px;">📍 San Benedetto del Tronto &nbsp;·&nbsp; disponibile ora</p>
     </div>
@@ -963,7 +963,7 @@
             ✓ Process restarted successfully<br>
             Deploy #1337 — status: live
         </div>
-        <button class="fake-error-close" id="fakeRestoreClose" style="background: #5DCAA5; border-color: #fff;">Meno male</button>
+        <button class="fake-error-close" id="fakeRestoreClose" style="background: #5DCAA5; border-color: #3aad87; box-shadow: 3px 3px 0px #3aad87; color: #1a1a1a;">Meno male</button>
     </div>
 </div>
 
@@ -1095,7 +1095,7 @@
                 nodes.forEach(node => {
                     originalTexts.push({ node, text: node.textContent });
                     const words = node.textContent.trim().split(/\s+/);
-                    node.textContent = node.textContent.replace(/\S+/g, () => 'Simone');
+                    node.textContent = node.textContent.replace(/\S+/g, () => 'simone');
                 });
                 simonified = true;
             } else {
