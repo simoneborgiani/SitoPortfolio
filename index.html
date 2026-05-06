@@ -186,6 +186,15 @@
             to   { transform: translateX(-50%); }
         }
 
+        @keyframes marquee-reverse {
+            from { transform: translateX(-50%); }
+            to   { transform: translateX(0); }
+        }
+
+        [data-matrix="true"] .quote-track {
+            animation: marquee-reverse 18s linear infinite !important;
+        }
+
         /* ── SECTIONS COMMON ── */
         section {
             padding: 80px 48px;
@@ -601,6 +610,37 @@
             box-shadow: 0px 0px 0px var(--black);
         }
 
+        /* ── LANG TOGGLE ── */
+        .lang-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            z-index: 200;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--white);
+            border: var(--border);
+            box-shadow: var(--shadow);
+            cursor: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: var(--font);
+            color: var(--orange);
+            transition: transform 0.15s, box-shadow 0.15s, background 0.3s;
+            letter-spacing: 0.02em;
+        }
+
+        .lang-toggle:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px var(--black);
+        }
+
+        [data-theme="dark"] .lang-toggle:active { box-shadow: 0px 0px 0px transparent; }
+
         /* ── DARK MODE TOGGLE ── */
         .theme-toggle {
             position: fixed;
@@ -817,27 +857,72 @@
         .hero-left  { animation: fadeUp 0.5s ease both; }
         .hero-image-wrap { animation: fadeUp 0.5s 0.15s ease both; }
         .quote-band { animation: fadeUp 0.5s 0.25s ease both; }
+
+        /* ── MATRIX EASTER EGG ── */
+        [data-matrix="true"] {
+            --bg: #0a0a0a !important;
+            --black: #00ff41 !important;
+            --white: #0d1a0d !important;
+            --orange: #00ff41 !important;
+            --border: 2.5px solid #00ff41 !important;
+            --shadow: 4px 4px 0px #00ff41 !important;
+            --shadow-lg: 6px 6px 0px #00ff41 !important;
+        }
+
+        [data-matrix="true"] * {
+            animation: flicker 0.15s infinite !important;
+        }
+
+        [data-matrix="true"] .project-card { background: #0a0a0a !important; }
+        [data-matrix="true"] .project-header { background: #00ff41 !important; border-color: #00ff41 !important; }
+        [data-matrix="true"] .project-body { background: #0a0a0a !important; border-color: #00ff41 !important; }
+        [data-matrix="true"] .project-meta { color: #0a0a0a !important; }
+        [data-matrix="true"] .project-meta a { color: #0a0a0a !important; }
+        [data-matrix="true"] .project-desc { color: #00ff41 !important; }
+        [data-matrix="true"] .project-logo svg path { fill: #0a0a0a !important; }
+        [data-matrix="true"] .quote-band { background: #050f05 !important; }
+        [data-matrix="true"] .tag { background: #0d1a0d !important; color: #00ff41 !important; border-color: #00ff41 !important; box-shadow: 2px 2px 0px #00ff41 !important; }
+        [data-matrix="true"] .live-badge { background: #00ff41 !important; color: #0a0a0a !important; border-color: #00aa2a !important; box-shadow: 2px 2px 0px #00aa2a !important; }
+        [data-matrix="true"] .live-dot { background: #0a0a0a !important; }
+        [data-matrix="true"] .project-placeholder { background: #0a0a0a !important; border-color: #00ff41 !important; color: #00ff41 !important; }
+        [data-matrix="true"] .nav-pill { background: #0d1a0d !important; }
+        [data-matrix="true"] footer { border-top-color: #00ff41 !important; }
+        [data-matrix="true"] #cursor { background: #00ff41 !important; border-color: #00aa2a !important; }
+        [data-matrix="true"] .theme-toggle { background: #0d1a0d !important; }
+        [data-matrix="true"] .lang-toggle { background: #0d1a0d !important; color: #00ff41 !important; }
+        [data-matrix="true"] .cta-section { background: #0a0a0a !important; background-image: none !important; }
+        [data-matrix="true"] .skill-card:nth-child(1), [data-matrix="true"] .skill-card:nth-child(3) { background: #0d1a0d !important; }
+        [data-matrix="true"] .hero-badge { background: #00ff41 !important; color: #0a0a0a !important; }
+        [data-matrix="true"] .email-pill { background: #0d1a0d !important; color: #00ff41 !important; }
+        [data-matrix="true"] [style*="color:#888"] { color: #00ff41 !important; }
+
+        @keyframes flicker {
+            0%, 95%, 100% { opacity: 1; }
+            96% { opacity: 0.85; }
+            97% { opacity: 1; }
+            98% { opacity: 0.9; }
+        }
     </style>
 </head>
 <body>
 <!-- NAV -->
 <nav>
     <div class="nav-pill">
-        <a href="#cosa-faccio">Cosa faccio</a>
-        <a href="#progetti">Progetti</a>
-        <a href="#contatti">Contatti</a>
+        <a href="#cosa-faccio" data-i18n="nav_cosa">Cosa faccio</a>
+        <a href="#progetti" data-i18n="nav_progetti">Progetti</a>
+        <a href="#contatti" data-i18n="nav_contatti">Contatti</a>
     </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
     <div class="hero-left">
-        <div class="hero-badge">Web Designer &amp; Developer</div>
+        <div class="hero-badge" data-i18n="hero_badge">Web Designer &amp; Developer</div>
         <h1 id="hero-name" style="user-select:none;-webkit-user-select:none;">Simone<br>Borgiani</h1>
         <p class="hero-sub">
-            Trasformo idee in prodotti digitali, dal <span style="color:var(--orange)">concept visivo</span> al <span style="color:var(--orange)">codice</span>
+            <span data-i18n-html="hero_sub">Trasformo idee in prodotti digitali, dal <span style="color:var(--orange)">concept visivo</span> al <span style="color:var(--orange)">codice</span></span>
         </p>
-        <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:500;color:#888;margin-top:16px;">📍 San Benedetto del Tronto &nbsp;·&nbsp; disponibile ora</p>
+        <p data-i18n-html="hero_location" style="font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:500;color:#888;margin-top:16px;">📍 San Benedetto del Tronto &nbsp;·&nbsp; disponibile ora</p>
     </div>
     <div class="hero-image-wrap">
         <!-- Sostituisci src con il percorso della tua immagine -->
@@ -848,35 +933,35 @@
 <!-- QUOTE BAND -->
 <div class="quote-band reveal">
     <div class="quote-track">
-        <span class="quote-item"><span class="quote-star">✦</span>Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span>
-        <span class="quote-item"><span class="quote-star">✦</span>Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span>
-        <span class="quote-item"><span class="quote-star">✦</span>Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span>
-        <span class="quote-item"><span class="quote-star">✦</span>Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span>
+        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span></span>
+        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span></span>
+        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span></span>
+        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span></span>
     </div>
 </div>
 
 <!-- COSA FACCIO -->
 <section id="cosa-faccio" class="reveal">
-    <p class="section-label">Cosa faccio</p>
+    <p class="section-label" data-i18n="skills_label">Cosa faccio</p>
     <div class="skills-grid">
         <div class="skill-card">
-            <h3>Web<br>design &amp; UI</h3>
-            <p>Figma, wireframe, mockup finale. Layout, tipografia, palette e microinterazioni che funzionano davvero.</p>
+            <h3 data-i18n-html="skill1_title">Web<br>design &amp; UI</h3>
+            <p data-i18n="skill1_desc">Figma, wireframe, mockup finale. Layout, tipografia, palette e microinterazioni che funzionano davvero.</p>
         </div>
         <div class="skill-card">
-            <h3>Sviluppo<br>Web</h3>
-            <p>HTML, CSS, JavaScript. Next.js su progetti reali. Imparo velocemente nuovi framework quando serve.</p>
+            <h3 data-i18n-html="skill2_title">Sviluppo<br>Web</h3>
+            <p data-i18n="skill2_desc">HTML, CSS, JavaScript. Next.js su progetti reali. Imparo velocemente nuovi framework quando serve.</p>
         </div>
         <div class="skill-card">
-            <h3>Marketing<br>Digitale</h3>
-            <p>Strategie di comunicazione online, gestione campagne e misurazione KPI. So come un brand deve parlare e posizionarsi nel digitale.</p>
+            <h3 data-i18n-html="skill3_title">Marketing<br>Digitale</h3>
+            <p data-i18n="skill3_desc">Strategie di comunicazione online, gestione campagne e misurazione KPI. So come un brand deve parlare e posizionarsi nel digitale.</p>
         </div>
     </div>
 </section>
 
 <!-- PROGETTI -->
 <section id="progetti" class="reveal">
-    <p class="section-label">Progetti</p>
+    <p class="section-label" data-i18n="projects_label">Progetti</p>
     <div class="projects-wrap">
         <div class="project-card">
             <div class="project-header">
@@ -894,12 +979,12 @@
                 </div>
                 <div class="project-meta">
                     <a href="https://huntlist.eu" target="_blank" rel="noopener">huntlist.eu</a>
-                    <span>2026 – in corso</span>
+                    <span data-i18n="project_date">2026 – in corso</span>
                 </div>
             </div>
             <div class="project-body">
                 <p class="project-desc">
-                    Reverse marketplace per il mercato del collezionismo — carte, fumetti, videogiochi. Il compratore pubblica quello che cerca, i venditori rispondono. Sviluppando MVP interamente in solo: design, frontend e backend.
+                    <span data-i18n="project_desc">Reverse marketplace per il mercato del collezionismo — carte, fumetti, videogiochi. Il compratore pubblica quello che cerca, i venditori rispondono. Sviluppando MVP interamente in solo: design, frontend e backend.</span>
                 </p>
                 <div class="project-tags">
                     <span class="tag">Vercel</span>
@@ -913,8 +998,8 @@
         </div>
 
         <div class="projects-placeholder-grid">
-            <div class="project-placeholder">In arrivo</div>
-            <div class="project-placeholder">In arrivo</div>
+            <div class="project-placeholder" data-i18n="placeholder">In arrivo</div>
+            <div class="project-placeholder" data-i18n="placeholder">In arrivo</div>
         </div>
     </div>
 </section>
@@ -923,8 +1008,8 @@
 <div class="cta-section reveal" id="contatti">
     <div class="cta-inner">
         <div class="cta-left">
-            <h2>Lavoriamo<br>insieme</h2>
-            <p>Disponibile per progetti freelance e<br>opportunità in team creativi.</p>
+            <h2 data-i18n-html="cta_title">Lavoriamo<br>insieme</h2>
+            <p data-i18n-html="cta_sub">Disponibile per progetti freelance e<br>opportunità in team creativi.</p>
         </div>
         <a class="email-pill" href="mailto:simoneborgiani.lavoro@gmail.com">
             simoneborgiani.lavoro@gmail.com
@@ -933,12 +1018,13 @@
 </div>
 
 <!-- DARK MODE TOGGLE -->
-<button class="theme-toggle" id="themeToggle" aria-label="Cambia tema"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D9EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+<button class="lang-toggle" id="langToggle" aria-label="Cambia lingua">it</button>
+<button class="theme-toggle" id="themeToggle" aria-label="Cambia tema"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
 
 <!-- FOOTER -->
 <footer>
-    <span>@2026 Simone Borgiani</span>
-    <a href="#">Designed &amp; Built by Me ↗</a>
+    <span data-i18n="footer_copy">@2026 Simone Borgiani</span>
+    <a href="#" data-i18n="footer_built">Designed &amp; Built by Me ↗</a>
 </footer>
 
 <div id="fake-restore">
@@ -979,14 +1065,14 @@
     const saved = localStorage.getItem('theme');
     if (saved) {
         document.documentElement.setAttribute('data-theme', saved);
-        toggle.innerHTML = saved === 'dark' ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>` : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D9EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+        toggle.innerHTML = saved === 'dark' ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D9EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>` : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
     }
     toggle.addEventListener('click', () => {
         const current = document.documentElement.getAttribute('data-theme');
         const next = current === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
-        toggle.innerHTML = next === 'dark' ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>` : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D9EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+        toggle.innerHTML = next === 'dark' ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D9EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>` : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
     });
 
     const cursorEl = document.getElementById('cursor');
@@ -1095,6 +1181,72 @@
             }
         }
     });
+</script>
+
+<script>
+    const translations = {"it": {"nav_cosa": "Cosa faccio", "nav_progetti": "Progetti", "nav_contatti": "Contatti", "hero_badge": "Web Designer &amp; Developer", "hero_sub": "Trasformo idee in prodotti digitali, dal <span style=\"color:var(--orange)\">concept visivo</span> al <span style=\"color:var(--orange)\">codice</span>", "hero_location": "📍 San Benedetto del Tronto &nbsp;·&nbsp; disponibile ora", "quote": "Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.", "skills_label": "Cosa faccio", "skill1_title": "Web<br>design &amp; UI", "skill1_desc": "Figma, wireframe, mockup finale. Layout, tipografia, palette e microinterazioni che funzionano davvero.", "skill2_title": "Sviluppo<br>Web", "skill2_desc": "HTML, CSS, JavaScript. Next.js su progetti reali. Imparo velocemente nuovi framework quando serve.", "skill3_title": "Marketing<br>Digitale", "skill3_desc": "Strategie di comunicazione online, gestione campagne e misurazione KPI. So come un brand deve parlare e posizionarsi nel digitale.", "projects_label": "Progetti", "project_desc": "Reverse marketplace per il mercato del collezionismo — carte, fumetti, videogiochi. Il compratore pubblica quello che cerca, i venditori rispondono. Sviluppando MVP interamente in solo: design, frontend e backend.", "project_date": "2026 – in corso", "placeholder": "In arrivo", "cta_title": "Lavoriamo<br>insieme", "cta_sub": "Disponibile per progetti freelance e<br>opportunità in team creativi.", "footer_built": "Designed &amp; Built by Me ↗", "footer_copy": "@2026 Simone Borgiani"}, "en": {"nav_cosa": "What I do", "nav_progetti": "Projects", "nav_contatti": "Contact", "hero_badge": "Web Designer &amp; Developer", "hero_sub": "Turning ideas into digital products, from <span style=\"color:var(--orange)\">visual design</span> to <span style=\"color:var(--orange)\">code</span>", "hero_location": "📍 San Benedetto del Tronto &nbsp;·&nbsp; available now", "quote": "There's nothing better than shaping something and watching it come to life.", "skills_label": "What I do", "skill1_title": "Web<br>design &amp; UI", "skill1_desc": "Figma, wireframes, final mockups. Layouts, typography, color palettes and microinteractions that actually work.", "skill2_title": "Web<br>Development", "skill2_desc": "HTML, CSS, JavaScript. Next.js on real projects. I learn new frameworks fast when needed.", "skill3_title": "Digital<br>Marketing", "skill3_desc": "Online communication strategies, campaign management and KPI tracking. I understand how brands should communicate and position themselves.", "projects_label": "Projects", "project_desc": "Reverse marketplace for the collectibles market — cards, comics, video games. Buyers post what they're looking for, sellers respond. Building the MVP entirely solo: design, frontend and backend.", "project_date": "2026 – ongoing", "placeholder": "Coming soon", "cta_title": "Work with<br>me", "cta_sub": "Available for freelance projects and<br>opportunities in creative teams.", "footer_built": "Designed &amp; Built by Me ↗", "footer_copy": "@2026 Simone Borgiani"}};
+    const langToggle = document.getElementById('langToggle');
+    let currentLang = localStorage.getItem('lang') || 'it';
+
+    function applyLang(lang) {
+        const t = translations[lang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) el.textContent = t[key].replace(/&amp;/g, '&');
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const key = el.getAttribute('data-i18n-html');
+            if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+        langToggle.textContent = lang === 'it' ? 'it' : 'en';
+        document.documentElement.setAttribute('lang', lang);
+    }
+
+    applyLang(currentLang);
+
+    langToggle.addEventListener('click', () => {
+        currentLang = currentLang === 'it' ? 'en' : 'it';
+        localStorage.setItem('lang', currentLang);
+        applyLang(currentLang);
+    });
+</script>
+
+<script>
+    // Matrix easter egg — 5 clicks on theme toggle in 3 seconds
+    const themeToggleEl = document.getElementById('themeToggle');
+    let matrixClicks = 0;
+    let matrixTimer = null;
+    let matrixActive = false;
+
+    themeToggleEl.addEventListener('click', () => {
+        if (matrixActive) {
+            // Deactivate
+            matrixActive = false;
+            document.documentElement.removeAttribute('data-matrix');
+            themeToggleEl.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ff41" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+            setTimeout(() => {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                themeToggleEl.innerHTML = isDark ? sunBlue : moonOrange;
+            }, 100);
+            return;
+        }
+
+        matrixClicks++;
+        clearTimeout(matrixTimer);
+        matrixTimer = setTimeout(() => { matrixClicks = 0; }, 3000);
+
+        if (matrixClicks >= 5) {
+            matrixClicks = 0;
+            clearTimeout(matrixTimer);
+            matrixActive = true;
+            document.documentElement.setAttribute('data-matrix', 'true');
+            themeToggleEl.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ff41" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+        }
+    });
+
+    // Store SVGs for restore
+    const moonOrange = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+    const sunBlue = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D9EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
 </script>
 </body>
 </html>
