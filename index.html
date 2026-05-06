@@ -431,6 +431,112 @@
             margin-left: 12px;
         }
 
+        .live-badge.shake-once {
+            animation: shake 0.4s ease;
+        }
+
+        .live-badge.offline {
+            background: #e53e3e !important;
+            border-color: #c53030 !important;
+            box-shadow: 2px 2px 0px #c53030 !important;
+            color: #fff !important;
+            animation: shake 0.4s ease;
+        }
+
+        .live-badge.offline .live-dot {
+            background: #fff !important;
+            animation: none !important;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-4px); }
+            40% { transform: translateX(4px); }
+            60% { transform: translateX(-3px); }
+            80% { transform: translateX(3px); }
+        }
+
+        /* Fake error overlay */
+        #fake-error, #fake-restore {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 9998;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font);
+        }
+
+        #fake-error.show, #fake-restore.show { display: flex; }
+
+        .fake-error-box {
+            background: #1a1a1a;
+            border: 2.5px solid #e53e3e;
+            box-shadow: 6px 6px 0px #e53e3e;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 480px;
+            width: 90%;
+            color: #fff;
+            text-align: left;
+        }
+
+        .fake-error-box .err-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e53e3e;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .fake-error-box h2 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .fake-error-box p {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-family: monospace;
+        }
+
+        .fake-error-box .err-code {
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 12px;
+            color: #e53e3e;
+            font-family: monospace;
+            margin-bottom: 28px;
+            line-height: 1.8;
+        }
+
+        .fake-error-close {
+            background: #e53e3e;
+            border: 2px solid #fff;
+            border-radius: 999px;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            font-family: var(--font);
+            box-shadow: 3px 3px 0px #fff;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .fake-error-close:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 0px 0px 0px #fff;
+        }
+
         .live-dot {
             width: 6px;
             height: 6px;
@@ -664,10 +770,10 @@
         /* ── CUSTOM CURSOR ── */
         body { cursor: none; }
 
-        @media (hover: none) {
-            body { cursor: auto; }
-            #cursor { display: none; }
-            a, button, .skill-card, .project-card, .project-placeholder, .nav-pill a { cursor: auto; }
+        @media (hover: none), (pointer: coarse) {
+            body { cursor: auto !important; }
+            #cursor { display: none !important; }
+            a, button, .skill-card, .project-card, .project-placeholder, .nav-pill a, .fake-error-close, .live-badge, .theme-toggle { cursor: auto !important; }
         }
 
         #cursor {
@@ -685,13 +791,14 @@
             transition: left 0.12s ease-out, top 0.12s ease-out;
         }
 
-        a, button, .skill-card, .project-card, .project-placeholder, .nav-pill a { cursor: none; }
+        a, button, .skill-card, .project-card, .project-placeholder, .nav-pill a, .fake-error-close { cursor: none; }
 
         /* ── DARK MODE OVERRIDES ── */
         [data-theme="dark"] .project-header { background: #30363D; border-color: #30363D; }
         [data-theme="dark"] .project-card { background: #161B22; }
         [data-theme="dark"] .project-meta { color: #8B949E; }
         [data-theme="dark"] .project-meta a { color: #8B949E; }
+        [data-theme="dark"] .project-meta a:hover { color: #4D9EFF; }
         [data-theme="dark"] .quote-band { background: #080D12; }
         [data-theme="dark"] .tag { background: #21262D; color: #E6EDF3; border-color: #30363D; box-shadow: 2px 2px 0px #30363D; }
         [data-theme="dark"] #cursor { background: #4D9EFF; border-color: #30363D; }
@@ -699,7 +806,7 @@
         [data-theme="dark"] .cta-left p { color: var(--black); }
         [data-theme="dark"] .project-body { border-color: #30363D; background: #1C2333; }
         [data-theme="dark"] footer { border-top-color: #30363D; }
-        [data-theme="dark"] .badge-live, [data-theme="dark"] .live-badge { background: #4D9EFF; border-color: #30363D; box-shadow: 2px 2px 0px #30363D; color: #0D1117; }
+        [data-theme="dark"] .badge-live, [data-theme="dark"] .live-badge { background: #4D9EFF; border-color: #30363D; box-shadow: 2px 2px 0px #30363D; color: #ffffff; }
         [data-theme="dark"] .theme-toggle:hover { box-shadow: 0px 0px 0px transparent; }
         [data-theme="dark"] .hero-badge { color: #0D1117; }
         [data-theme="dark"] .skill-card:hover { box-shadow: 0px 0px 0px transparent; }
@@ -734,7 +841,7 @@
 <div class="hero">
     <div class="hero-left">
         <div class="hero-badge">Web Designer &amp; Developer</div>
-        <h1>Simone<br>Borgiani</h1>
+        <h1 id="hero-name" style="user-select:none;-webkit-user-select:none;">Simone<br>Borgiani</h1>
         <p class="hero-sub">
             Trasformo idee in prodotti digitali, dal <span style="color:var(--orange)">concept visivo</span> al <span style="color:var(--orange)">codice</span>.
         </p>
@@ -845,6 +952,36 @@
     <a href="#">Designed &amp; Built by Me ↗</a>
 </footer>
 
+<div id="fake-restore">
+    <div class="fake-error-box" style="border-color: #5DCAA5; box-shadow: 6px 6px 0px #5DCAA5;">
+        <div class="err-title" style="color: #5DCAA5;">✓ Deployment restored — huntlist.eu</div>
+        <h2>Servizio ripristinato</h2>
+        <p>Il sistema si è ripreso automaticamente.<br>Tutto torna come prima, per ora.</p>
+        <div class="err-code" style="color: #5DCAA5;">
+            ✓ Database connection restored<br>
+            ✓ Supabase pool reinitialized<br>
+            ✓ Process restarted successfully<br>
+            Deploy #1337 — status: live
+        </div>
+        <button class="fake-error-close" id="fakeRestoreClose" style="background: #5DCAA5; border-color: #fff;">Meno male</button>
+    </div>
+</div>
+
+<div id="fake-error">
+    <div class="fake-error-box">
+        <div class="err-title">⚠ Critical Error — huntlist.eu</div>
+        <h2>Servizio non disponibile</h2>
+        <p>Si è verificato un errore irreversibile durante il deployment.<br>Il database è stato disconnesso.</p>
+        <div class="err-code">
+            Error: ECONNREFUSED 127.0.0.1:5432<br>
+            at TCPConnectWrap.afterConnect<br>
+            Supabase: connection pool exhausted<br>
+            Process exited with code 1
+        </div>
+        <button class="fake-error-close" id="fakeErrorClose">Ok scusa ho rotto tutto</button>
+    </div>
+</div>
+
 <div id="cursor"></div>
 
 <script>
@@ -864,13 +1001,10 @@
     });
 
     const cursorEl = document.getElementById('cursor');
+
     document.addEventListener('mousemove', e => {
         cursorEl.style.left = e.clientX + 'px';
         cursorEl.style.top = e.clientY + 'px';
-    });
-    document.querySelectorAll('a, button, .skill-card, .project-card, .project-placeholder, .nav-pill a').forEach(el => {
-        el.addEventListener('mouseenter', () => cursorEl.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => cursorEl.classList.remove('hovering'));
     });
 
     // Scroll reveal
@@ -885,5 +1019,93 @@
     reveals.forEach(el => observer.observe(el));
 </script>
 
+
+<script>
+    // Easter egg — live badge
+    const liveBadge = document.querySelector('.live-badge');
+    const fakeError = document.getElementById('fake-error');
+    const fakeErrorClose = document.getElementById('fakeErrorClose');
+    const fakeRestore = document.getElementById('fake-restore');
+    const fakeRestoreClose = document.getElementById('fakeRestoreClose');
+
+    liveBadge.addEventListener('click', () => {
+        if (!liveBadge.classList.contains('offline')) {
+            // Go offline
+            liveBadge.classList.add('offline');
+            liveBadge.querySelector('.live-dot') && (liveBadge.querySelector('.live-dot').style.background = '#fff');
+            liveBadge.childNodes[1].textContent = 'offline';
+            setTimeout(() => fakeError.classList.add('show'), 600);
+        } else {
+            // Shake first, then show restore banner
+            liveBadge.classList.remove('offline');
+            liveBadge.querySelector('.live-dot') && (liveBadge.querySelector('.live-dot').style.background = '');
+            liveBadge.childNodes[1].textContent = 'live';
+            liveBadge.classList.remove('shake-once');
+            void liveBadge.offsetWidth; // force reflow
+            liveBadge.classList.add('shake-once');
+            setTimeout(() => {
+                liveBadge.classList.remove('shake-once');
+                setTimeout(() => fakeRestore.classList.add('show'), 150);
+            }, 400);
+        }
+    });
+
+    fakeErrorClose.addEventListener('click', () => {
+        fakeError.classList.remove('show');
+    });
+
+    fakeRestoreClose.addEventListener('click', () => {
+        fakeRestore.classList.remove('show');
+    });
+</script>
+
+<script>
+    // Easter egg 2 — triple click on name = everything becomes "Simone"
+    const heroName = document.getElementById('hero-name');
+    let clickCount = 0;
+    let clickTimer = null;
+    let simonified = false;
+    let originalTexts = [];
+
+    heroName.addEventListener('click', () => {
+        clickCount++;
+        clearTimeout(clickTimer);
+        clickTimer = setTimeout(() => { clickCount = 0; }, 500);
+
+        if (clickCount >= 2) {
+            clickCount = 0;
+            clearTimeout(clickTimer);
+
+            if (!simonified) {
+                // Save and replace all text nodes
+                originalTexts = [];
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+                    acceptNode: n => {
+                        const parent = n.parentElement;
+                        if (!parent) return NodeFilter.FILTER_REJECT;
+                        const tag = parent.tagName;
+                        if (['SCRIPT','STYLE','SVG','PATH','BUTTON'].includes(tag)) return NodeFilter.FILTER_REJECT;
+                        if (parent.closest('svg')) return NodeFilter.FILTER_REJECT;
+                        if (n.textContent.trim() === '') return NodeFilter.FILTER_REJECT;
+                        return NodeFilter.FILTER_ACCEPT;
+                    }
+                });
+                const nodes = [];
+                while (walker.nextNode()) nodes.push(walker.currentNode);
+                nodes.forEach(node => {
+                    originalTexts.push({ node, text: node.textContent });
+                    const words = node.textContent.trim().split(/\s+/);
+                    node.textContent = node.textContent.replace(/\S+/g, () => 'Simone');
+                });
+                simonified = true;
+            } else {
+                // Restore
+                originalTexts.forEach(({ node, text }) => node.textContent = text);
+                originalTexts = [];
+                simonified = false;
+            }
+        }
+    });
+</script>
 </body>
 </html>
