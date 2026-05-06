@@ -21,6 +21,16 @@
             --font: 'Bricolage Grotesque', sans-serif;
         }
 
+        [data-theme="dark"] {
+            --bg: #0D1117;
+            --black: #E6EDF3;
+            --white: #161B22;
+            --orange: #4D9EFF;
+            --border: 2.5px solid #30363D;
+            --shadow: 4px 4px 0px #30363D;
+            --shadow-lg: 6px 6px 0px #30363D;
+        }
+
         html { scroll-behavior: smooth; }
 
         body {
@@ -493,6 +503,31 @@
             box-shadow: 0px 0px 0px var(--black);
         }
 
+        /* ── DARK MODE TOGGLE ── */
+        .theme-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 200;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--white);
+            border: var(--border);
+            box-shadow: var(--shadow);
+            cursor: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: transform 0.15s, box-shadow 0.15s, background 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px var(--black);
+        }
+
         /* ── BOTTOM BAR ── */
         footer {
             background: var(--bg);
@@ -646,6 +681,28 @@
 
         a, button, .skill-card, .project-card, .project-placeholder, .nav-pill a { cursor: none; }
 
+        /* ── DARK MODE OVERRIDES ── */
+        [data-theme="dark"] .project-header { background: #30363D; border-color: #30363D; }
+        [data-theme="dark"] .project-card { background: #161B22; }
+        [data-theme="dark"] .project-meta { color: #8B949E; }
+        [data-theme="dark"] .project-meta a { color: #8B949E; }
+        [data-theme="dark"] .quote-band { background: #080D12; }
+        [data-theme="dark"] .tag { background: #21262D; color: #8B949E; border-color: #30363D; box-shadow: 2px 2px 0px #30363D; }
+        [data-theme="dark"] #cursor { background: #4D9EFF; border-color: #30363D; }
+        [data-theme="dark"] .hero-image-wrap { background: #21262D; }
+        [data-theme="dark"] .cta-left p { color: var(--black); }
+        [data-theme="dark"] .project-body { border-color: #30363D; background: #1C2333; }
+        [data-theme="dark"] footer { border-top-color: #30363D; }
+        [data-theme="dark"] .badge-live, [data-theme="dark"] .live-badge { background: #4D9EFF; border-color: #30363D; box-shadow: 2px 2px 0px #30363D; color: #0D1117; }
+        [data-theme="dark"] .theme-toggle:hover { box-shadow: 0px 0px 0px transparent; }
+        [data-theme="dark"] .hero-badge { color: #0D1117; }
+        [data-theme="dark"] .skill-card:hover { box-shadow: 0px 0px 0px transparent; }
+        [data-theme="dark"] .project-card:hover { box-shadow: 0px 0px 0px transparent; }
+        [data-theme="dark"] .project-placeholder:hover { box-shadow: 0px 0px 0px transparent; }
+        [data-theme="dark"] .email-pill:hover { box-shadow: 0px 0px 0px transparent; }
+        [data-theme="dark"] .skill-card:nth-child(1), [data-theme="dark"] .skill-card:nth-child(3) { background: #1C2333; }
+        [data-theme="dark"] .cta-section { background: #0D1117; background-image: repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(77,158,255,0.04) 10px, rgba(77,158,255,0.04) 20px); }
+
         /* ── ANIMATIONS ── */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(24px); }
@@ -773,6 +830,9 @@
     </div>
 </div>
 
+<!-- DARK MODE TOGGLE -->
+<button class="theme-toggle" id="themeToggle" aria-label="Cambia tema"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D9EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+
 <!-- FOOTER -->
 <footer>
     <span>@2026 Simone Borgiani</span>
@@ -782,6 +842,21 @@
 <div id="cursor"></div>
 
 <script>
+    // Dark mode toggle
+    const toggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        toggle.innerHTML = saved === 'dark' ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>` : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D9EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+    }
+    toggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        toggle.innerHTML = next === 'dark' ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>` : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D9EFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+    });
+
     const cursorEl = document.getElementById('cursor');
     document.addEventListener('mousemove', e => {
         cursorEl.style.left = e.clientX + 'px';
