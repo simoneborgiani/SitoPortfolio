@@ -788,6 +788,26 @@
             .cta-left { text-align: center; }
         }
 
+        /* ── PROJECT PREVIEW IMAGE ── */
+        .project-preview {
+            overflow: hidden;
+            border-top: 2.5px solid var(--black);
+            border-bottom: 2.5px solid var(--black);
+        }
+
+        .project-preview img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: top;
+            max-height: 220px;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-preview img {
+            transform: scale(1.03);
+        }
+
         /* ── SCROLL REVEAL ── */
         .reveal {
             opacity: 0;
@@ -933,10 +953,10 @@
 <!-- QUOTE BAND -->
 <div class="quote-band reveal">
     <div class="quote-track">
-        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span></span>
-        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span></span>
-        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span></span>
-        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.</span></span>
+        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Codice al servizio del design.</span></span>
+        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Codice al servizio del design.</span></span>
+        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Codice al servizio del design.</span></span>
+        <span class="quote-item"><span class="quote-star">✦</span><span data-i18n="quote">Codice al servizio del design.</span></span>
     </div>
 </div>
 
@@ -966,15 +986,7 @@
         <div class="project-card">
             <div class="project-header">
                 <div class="project-logo" style="align-items:center;">
-                    <svg width="180" height="48" viewBox="0 0 306 82" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:40px;width:auto;">
-                        <path d="M67.8334 16.8664V59.9909C67.8334 60.6765 67.8997 61.163 68.0324 61.4505C68.1651 61.738 68.3863 61.9481 68.6959 62.0808L69.6247 62.4125C70.1555 62.7 70.4208 63.1092 70.4208 63.6399C70.4208 64.5466 69.868 65 68.7622 65H53.4364C52.8835 65 52.4744 64.8894 52.209 64.6683C51.9436 64.425 51.8109 64.1043 51.8109 63.7063C51.8109 63.4188 51.8884 63.1644 52.0432 62.9433C52.198 62.7221 52.4523 62.5452 52.8061 62.4125L53.7681 62.0808C54.0778 61.9702 54.2989 61.7712 54.4316 61.4837C54.5643 61.1741 54.6306 60.6765 54.6306 59.9909V23.0365C54.6306 22.55 54.5532 22.1961 54.3984 21.975C54.2436 21.7538 54.0225 21.6101 53.735 21.5437L52.773 21.411C52.4191 21.3226 52.1648 21.1899 52.01 21.013C51.8773 20.8139 51.8109 20.5596 51.8109 20.25C51.8109 19.8961 51.9105 19.6197 52.1095 19.4207C52.3085 19.2216 52.6624 19.0226 53.171 18.8236L62.6584 15.7385C63.4325 15.4289 64.0406 15.2188 64.4829 15.1082C64.9473 14.9755 65.4007 14.9092 65.843 14.9092C66.5065 14.9092 67.0041 15.0972 67.3358 15.4731C67.6675 15.8491 67.8334 16.3135 67.8334 16.8664ZM66.7387 42.8406L65.3786 41.381L66.5065 40.3527C69.293 37.8094 71.7146 35.9628 73.7713 34.8128C75.828 33.6628 77.7078 33.0878 79.4107 33.0878C81.9097 33.0878 83.8669 33.895 85.2822 35.5094C86.6976 37.1239 87.549 39.3796 87.8365 42.2767L89.6279 59.9909C89.6942 60.6765 89.7716 61.1741 89.8601 61.4837C89.9485 61.7712 90.1586 61.9702 90.4903 62.0808L91.4192 62.4125C91.7951 62.5452 92.0605 62.7221 92.2153 62.9433C92.3701 63.1644 92.4475 63.4188 92.4475 63.7063C92.4475 64.1043 92.3148 64.425 92.0495 64.6683C91.7841 64.8894 91.3639 65 90.7889 65H75.2641C74.1583 65 73.6054 64.5466 73.6054 63.6399C73.6054 63.1092 73.8708 62.7 74.4016 62.4125L75.3304 62.0808C75.64 61.9481 75.8722 61.738 76.027 61.4505C76.204 61.163 76.2482 60.6765 76.1597 59.9909L74.7001 43.9685C74.5896 42.6858 74.3021 41.7349 73.8376 41.1156C73.3732 40.4743 72.6434 40.1536 71.6482 40.1536C71.029 40.1536 70.3987 40.3084 69.7574 40.618C69.1161 40.9055 68.5079 41.2926 67.9329 41.7791L66.7387 42.8406ZM116.98 60.6544V58.4318L116.681 58.3323V41.2152C116.681 40.7065 116.604 40.3527 116.449 40.1536C116.316 39.9325 116.095 39.7887 115.786 39.7224L114.824 39.5897C114.492 39.5012 114.249 39.3575 114.094 39.1584C113.939 38.9594 113.862 38.7161 113.862 38.4286C113.862 38.0748 113.961 37.7984 114.16 37.5993C114.359 37.4003 114.713 37.2013 115.222 37.0022L124.709 33.884C125.483 33.5965 126.091 33.3974 126.534 33.2869C126.998 33.1542 127.451 33.0878 127.894 33.0878C128.557 33.0878 129.055 33.2758 129.386 33.6518C129.74 34.0056 129.917 34.47 129.917 35.045V59.9909C129.917 60.6765 129.972 61.1741 130.083 61.4837C130.216 61.7712 130.437 61.9702 130.746 62.0808L131.708 62.4125C132.062 62.5452 132.317 62.7221 132.471 62.9433C132.626 63.1644 132.704 63.4188 132.704 63.7063C132.704 64.1043 132.571 64.425 132.306 64.6683C132.062 64.8894 131.653 65 131.078 65H120.828C119.788 65 118.882 64.5798 118.108 63.7394C117.356 62.8769 116.98 61.8486 116.98 60.6544ZM96.2137 56.3087V41.2152C96.2137 40.7065 96.1363 40.3527 95.9815 40.1536C95.8267 39.9325 95.6055 39.7887 95.318 39.7224L94.356 39.5897C94.0022 39.5012 93.7478 39.3575 93.593 39.1584C93.4603 38.9594 93.394 38.7161 93.394 38.4286C93.394 38.0748 93.4935 37.7984 93.6926 37.5993C93.8916 37.4003 94.2454 37.2013 94.7541 37.0022L104.241 33.884C105.06 33.5965 105.69 33.3974 106.132 33.2869C106.575 33.1542 106.984 33.0878 107.36 33.0878C108.045 33.0878 108.565 33.2758 108.919 33.6518C109.273 34.0056 109.45 34.47 109.45 35.045V54.6169C109.45 56.0102 109.748 57.0496 110.345 57.7352C110.942 58.3986 111.794 58.7304 112.9 58.7304C113.607 58.7304 114.337 58.5977 115.089 58.3323C115.841 58.0448 116.504 57.6357 117.079 57.1049L118.307 56.0434L119.667 57.503L118.539 58.5313C115.686 61.1851 113.143 63.0649 110.909 64.1707C108.698 65.2764 106.696 65.8293 104.905 65.8293C102.317 65.8293 100.217 65 98.6021 63.3414C97.0098 61.6606 96.2137 59.3164 96.2137 56.3087ZM151.737 34.9787V59.9909C151.737 60.6765 151.803 61.1741 151.936 61.4837C152.069 61.7712 152.29 61.9702 152.6 62.0808L153.528 62.4125C154.059 62.7 154.325 63.1092 154.325 63.6399C154.325 64.5466 153.772 65 152.666 65H137.34C136.787 65 136.378 64.8894 136.113 64.6683C135.847 64.425 135.715 64.1043 135.715 63.7063C135.715 63.4188 135.792 63.1644 135.947 62.9433C136.102 62.7221 136.356 62.5452 136.71 62.4125L137.672 62.0808C137.981 61.9702 138.203 61.7712 138.335 61.4837C138.468 61.1741 138.534 60.6765 138.534 59.9909V41.1488C138.534 40.6623 138.457 40.3084 138.302 40.0873C138.147 39.8661 137.926 39.7224 137.639 39.656L136.677 39.5233C136.323 39.4349 136.068 39.3022 135.914 39.1253C135.781 38.9262 135.715 38.6719 135.715 38.3623C135.715 38.0085 135.814 37.732 136.013 37.533C136.212 37.3339 136.566 37.1349 137.075 36.9359L146.562 33.8508C147.336 33.5412 147.944 33.3311 148.387 33.2205C148.851 33.0878 149.304 33.0215 149.747 33.0215C150.41 33.0215 150.908 33.2095 151.239 33.5854C151.571 33.9614 151.737 34.4258 151.737 34.9787ZM150.642 42.8406L149.282 41.381L150.41 40.3527C153.197 37.8094 155.618 35.9628 157.675 34.8128C159.732 33.6628 161.611 33.0878 163.314 33.0878C165.813 33.0878 167.771 33.895 169.186 35.5094C170.601 37.1239 171.453 39.3796 171.74 42.2767L173.532 59.9909C173.598 60.6765 173.675 61.1741 173.764 61.4837C173.852 61.7712 174.062 61.9702 174.394 62.0808L175.323 62.4125C175.699 62.5452 175.964 62.7221 176.119 62.9433C176.274 63.1644 176.351 63.4188 176.351 63.7063C176.351 64.1043 176.219 64.425 175.953 64.6683C175.688 64.8894 175.268 65 174.693 65H159.168C158.062 65 157.509 64.5466 157.509 63.6399C157.509 63.1092 157.774 62.7 158.305 62.4125L159.234 62.0808C159.544 61.9481 159.776 61.738 159.931 61.4505C160.108 61.163 160.152 60.6765 160.063 59.9909L158.604 43.9685C158.493 42.6858 158.206 41.7349 157.741 41.1156C157.277 40.4743 156.547 40.1536 155.552 40.1536C154.933 40.1536 154.302 40.3084 153.661 40.618C153.02 40.9055 152.412 41.2926 151.837 41.7791L150.642 42.8406ZM179.353 37.0022L177.727 36.4715C177.396 36.3388 177.141 36.1729 176.964 35.9739C176.787 35.7748 176.699 35.5316 176.699 35.2441C176.699 34.8239 176.843 34.5032 177.13 34.2821C177.418 34.0609 177.772 33.9503 178.192 33.9503H180.348C180.636 33.9503 180.901 33.884 181.144 33.7513C181.387 33.5965 181.708 33.3311 182.106 32.9551L189.271 26.9177C189.758 26.4312 190.233 26.0663 190.698 25.823C191.162 25.5797 191.583 25.4581 191.958 25.4581C192.423 25.4581 192.788 25.6129 193.053 25.9225C193.319 26.21 193.451 26.6413 193.451 27.2163V53.9203C193.451 55.6895 193.75 57.0164 194.347 57.901C194.966 58.7856 195.829 59.2279 196.934 59.2279C197.598 59.2279 198.14 59.0842 198.56 58.7967C198.98 58.4871 199.334 58.1111 199.621 57.6688C199.909 57.2044 200.196 56.74 200.484 56.2756C200.771 55.8112 201.103 55.4131 201.479 55.0814C201.744 55.015 201.977 55.0814 202.176 55.2804C202.397 55.4573 202.507 55.8001 202.507 56.3087C202.375 58.2106 201.833 59.8803 200.882 61.3178C199.931 62.7332 198.626 63.839 196.968 64.6351C195.331 65.4312 193.407 65.8293 191.195 65.8293C187.723 65.8293 185.047 65.0111 183.168 63.3745C181.31 61.7159 180.381 59.2058 180.381 55.8443V38.5282C180.381 38.0637 180.304 37.732 180.149 37.533C179.994 37.3339 179.729 37.157 179.353 37.0022ZM189.172 37.0686L189.338 33.9503H200.915C201.357 33.9503 201.711 34.0498 201.977 34.2489C202.242 34.4258 202.375 34.7022 202.375 35.0782C202.375 35.6311 202.098 36.1066 201.545 36.5046C200.993 36.8806 200.097 37.0686 198.858 37.0686H189.172ZM220.775 16.8664V59.9909C220.775 60.6765 220.83 61.1741 220.941 61.4837C221.074 61.7712 221.295 61.9702 221.605 62.0808L222.567 62.4125C222.92 62.5452 223.175 62.7221 223.329 62.9433C223.484 63.1644 223.562 63.4188 223.562 63.7063C223.562 64.1043 223.429 64.425 223.164 64.6683C222.92 64.8894 222.511 65 221.936 65H206.345C205.792 65 205.383 64.8894 205.118 64.6683C204.852 64.425 204.72 64.1043 204.72 63.7063C204.72 63.4188 204.797 63.1644 204.952 62.9433C205.107 62.7221 205.361 62.5452 205.715 62.4125L206.677 62.0808C207.009 61.9702 207.23 61.7712 207.34 61.4837C207.473 61.1741 207.539 60.6765 207.539 59.9909V23.0365C207.539 22.55 207.462 22.1961 207.307 21.975C207.152 21.7538 206.931 21.6101 206.644 21.5437L205.682 21.411C205.328 21.3226 205.073 21.1899 204.919 21.013C204.786 20.8139 204.72 20.5596 204.72 20.25C204.72 19.8961 204.819 19.6197 205.018 19.4207C205.217 19.2216 205.571 19.0226 206.08 18.8236L215.567 15.7385C216.385 15.4289 217.016 15.2188 217.458 15.1082C217.9 14.9755 218.309 14.9092 218.685 14.9092C219.371 14.9092 219.891 15.0972 220.244 15.4731C220.598 15.8491 220.775 16.3135 220.775 16.8664ZM242.185 34.9787V59.9909C242.185 60.6765 242.251 61.1741 242.384 61.4837C242.516 61.7712 242.737 61.9702 243.047 62.0808L244.009 62.4125C244.363 62.5452 244.617 62.7221 244.772 62.9433C244.927 63.1644 245.004 63.4188 245.004 63.7063C245.004 64.1043 244.872 64.425 244.606 64.6683C244.363 64.8894 243.954 65 243.379 65H227.788C227.235 65 226.826 64.8894 226.56 64.6683C226.295 64.425 226.162 64.1043 226.162 63.7063C226.162 63.4188 226.24 63.1644 226.394 62.9433C226.549 62.7221 226.803 62.5452 227.157 62.4125L228.119 62.0808C228.429 61.9702 228.65 61.7712 228.783 61.4837C228.915 61.1741 228.982 60.6765 228.982 59.9909V41.1488C228.982 40.6623 228.904 40.3084 228.75 40.0873C228.595 39.8661 228.374 39.7224 228.086 39.656L227.124 39.5233C226.77 39.4349 226.516 39.3022 226.361 39.1253C226.228 38.9262 226.162 38.6719 226.162 38.3623C226.162 38.0085 226.262 37.732 226.461 37.533C226.66 37.3339 227.014 37.1349 227.522 36.9359L237.01 33.8508C237.828 33.5412 238.458 33.3311 238.9 33.2205C239.343 33.0878 239.752 33.0215 240.128 33.0215C240.813 33.0215 241.322 33.2095 241.654 33.5854C242.008 33.9614 242.185 34.4258 242.185 34.9787ZM235.086 30.5335C232.808 30.5335 230.983 29.9364 229.612 28.7422C228.241 27.5259 227.555 25.9446 227.555 23.9985C227.555 22.0745 228.241 20.5264 229.612 19.3543C230.983 18.1601 232.808 17.563 235.086 17.563C237.386 17.563 239.221 18.1601 240.592 19.3543C241.986 20.5264 242.682 22.0745 242.682 23.9985C242.682 25.9446 241.986 27.5259 240.592 28.7422C239.221 29.9364 237.386 30.5335 235.086 30.5335ZM262.373 62.9433C263.611 62.9433 264.54 62.6669 265.159 62.114C265.801 61.539 266.121 60.8313 266.121 59.9909C266.121 59.4159 265.989 58.8852 265.723 58.3986C265.48 57.89 264.993 57.4256 264.264 57.0054C263.534 56.5852 262.45 56.2092 261.013 55.8775C257.386 55.0592 254.599 54.0751 252.653 52.9251C250.707 51.7751 249.369 50.4482 248.639 48.9444C247.909 47.4185 247.545 45.7156 247.545 43.8358C247.545 40.4301 248.717 37.7873 251.061 35.9075C253.405 34.0277 256.756 33.0878 261.112 33.0878C262.66 33.0878 263.91 33.2205 264.861 33.4859C265.834 33.7292 266.597 33.9835 267.15 34.2489C267.725 34.5143 268.178 34.647 268.51 34.647C268.952 34.647 269.416 34.5143 269.903 34.2489C270.389 33.9835 270.876 33.7292 271.363 33.4859C271.849 33.2205 272.325 33.0878 272.789 33.0878C273.099 33.0878 273.386 33.1874 273.651 33.3864C273.939 33.5854 274.149 33.9835 274.282 34.5806L275.874 42.343C276.117 43.1171 276.184 43.7363 276.073 44.2007C275.985 44.643 275.719 44.9526 275.277 45.1295C274.813 45.3065 274.414 45.3175 274.083 45.1627C273.751 45.0079 273.419 44.6872 273.088 44.2007C271.827 42.1882 270.589 40.5849 269.372 39.3907C268.156 38.1743 266.928 37.2897 265.69 36.7368C264.474 36.184 263.191 35.9075 261.842 35.9075C260.449 35.9075 259.398 36.2061 258.691 36.8032C258.005 37.3782 257.662 38.1633 257.662 39.1584C257.662 39.8219 257.828 40.419 258.16 40.9498C258.514 41.4584 259.177 41.9339 260.15 42.3762C261.123 42.8185 262.539 43.2497 264.396 43.6699C267.36 44.2892 269.704 45.1406 271.429 46.2242C273.154 47.3079 274.381 48.6016 275.111 50.1054C275.863 51.5872 276.239 53.29 276.239 55.214C276.239 57.3813 275.675 59.2611 274.547 60.8534C273.419 62.4236 271.893 63.651 269.969 64.5356C268.067 65.3981 265.911 65.8293 263.501 65.8293C262.019 65.8293 260.814 65.6856 259.885 65.3981C258.956 65.1106 258.204 64.8231 257.629 64.5356C257.054 64.226 256.579 64.0712 256.203 64.0712C255.782 64.0712 255.307 64.2149 254.776 64.5024C254.245 64.7678 253.715 65.0332 253.184 65.2986C252.653 65.5861 252.178 65.7298 251.757 65.7298C251.404 65.7298 251.094 65.5971 250.829 65.3317C250.585 65.0663 250.408 64.613 250.298 63.9716L249.236 57.0717C249.104 56.2756 249.093 55.6895 249.203 55.3136C249.336 54.9155 249.601 54.628 249.999 54.4511C250.42 54.252 250.795 54.252 251.127 54.4511C251.481 54.6501 251.846 55.004 252.222 55.5126C253.991 58.1885 255.705 60.1015 257.364 61.2515C259.044 62.3794 260.714 62.9433 262.373 62.9433ZM281.333 37.0022L279.708 36.4715C279.376 36.3388 279.122 36.1729 278.945 35.9739C278.768 35.7748 278.679 35.5316 278.679 35.2441C278.679 34.8239 278.823 34.5032 279.11 34.2821C279.398 34.0609 279.752 33.9503 280.172 33.9503H282.328C282.616 33.9503 282.881 33.884 283.124 33.7513C283.368 33.5965 283.688 33.3311 284.086 32.9551L291.252 26.9177C291.738 26.4312 292.214 26.0663 292.678 25.823C293.143 25.5797 293.563 25.4581 293.939 25.4581C294.403 25.4581 294.768 25.6129 295.033 25.9225C295.299 26.21 295.431 26.6413 295.431 27.2163V53.9203C295.431 55.6895 295.73 57.0164 296.327 57.901C296.946 58.7856 297.809 59.2279 298.915 59.2279C299.578 59.2279 300.12 59.0842 300.54 58.7967C300.96 58.4871 301.314 58.1111 301.602 57.6688C301.889 57.2044 302.177 56.74 302.464 56.2756C302.752 55.8112 303.083 55.4131 303.459 55.0814C303.725 55.015 303.957 55.0814 304.156 55.2804C304.377 55.4573 304.488 55.8001 304.488 56.3087C304.355 58.2106 303.813 59.8803 302.862 61.3178C301.911 62.7332 300.606 63.839 298.948 64.6351C297.311 65.4312 295.387 65.8293 293.176 65.8293C289.704 65.8293 287.028 65.0111 285.148 63.3745C283.29 61.7159 282.361 59.2058 282.361 55.8443V38.5282C282.361 38.0637 282.284 37.732 282.129 37.533C281.974 37.3339 281.709 37.157 281.333 37.0022ZM291.152 37.0686L291.318 33.9503H302.895C303.338 33.9503 303.691 34.0498 303.957 34.2489C304.222 34.4258 304.355 34.7022 304.355 35.0782C304.355 35.6311 304.078 36.1066 303.526 36.5046C302.973 36.8806 302.077 37.0686 300.839 37.0686H291.152Z" fill="white"/>
-                        <path d="M17.0195 6.98865L34.039 24.0082L17.0195 34.3901L-1.52588e-05 24.0082L17.0195 6.98865Z" fill="#F5855A"/>
-                        <path d="M-3.05176e-05 24.0082L17.0195 34.3901V68.9397L-3.05176e-05 24.0082Z" fill="#E8622A"/>
-                        <path d="M34.039 24.0082L17.0195 34.3901V68.9397L34.039 24.0082Z" fill="#E8622A"/>
-                        <path d="M17.0195 19.5831L34.039 36.6026L17.0195 46.9845L-3.05176e-05 36.6026L17.0195 19.5831Z" fill="#5DCAA5"/>
-                        <path d="M-4.57764e-05 36.6025L17.0195 46.9844V81.534L-4.57764e-05 36.6025Z" fill="#1D9E75"/>
-                        <path d="M34.039 36.6025L17.0195 46.9844V81.534L34.039 36.6025Z" fill="#1D9E75"/>
-                    </svg>
+                    <img src="logo_huntlist.svg" alt="huntlist" style="height:56px;width:auto;">
                     <span class="live-badge"><span class="live-dot"></span>live</span>
                 </div>
                 <div class="project-meta">
@@ -992,6 +1004,83 @@
                     <div class="tags-row">
                         <span class="tag">Stripe</span>
                         <span class="tag">Supabase</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-header">
+                <div class="project-logo" style="align-items:center;">
+                    <span style="color:#fff;font-size:20px;font-weight:800;letter-spacing:-0.5px;line-height:1.1;">Adriatica<br>Montaggio Arredi</span>
+                    <span class="live-badge" style="background:var(--orange);border-color:#b84d1f;box-shadow:2px 2px 0px #b84d1f;color:#fff;" data-i18n="badge_wip">in lavorazione</span>
+                </div>
+                <div class="project-meta">
+                    <a href="https://adriaticamontaggioarredi.com" target="_blank" rel="noopener">adriaticamontaggioarredi.com</a>
+                    <span data-i18n="project2_date">2026</span>
+                </div>
+            </div>
+            <div class="project-body">
+                <p class="project-desc">
+                    <span data-i18n="project2_desc">Sito web aziendale per Adriatica Montaggio Arredi, impresa specializzata nel montaggio professionale di mobili e arredi. Design, sviluppo e ottimizzazione SEO.</span>
+                </p>
+                <div class="project-tags">
+                    <span class="tag">Web Design</span>
+                    <div class="tags-row">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">SEO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-header">
+                <div class="project-logo" style="align-items:center;">
+                    <span style="color:#fff;font-size:22px;font-weight:800;letter-spacing:-0.5px;">Gimmy</span>
+                    <span class="live-badge" style="background:#A259FF;border-color:#7c3dcc;box-shadow:2px 2px 0px #7c3dcc;color:#fff;">Figma</span>
+                </div>
+                <div class="project-meta">
+                    <a href="https://www.figma.com/design/gGAu8OtL615VeDbK59fv3e/Untitled?node-id=0-1&t=IGorQ1mRepwuGKlE-1" target="_blank" rel="noopener">Apri in Figma ↗</a>
+                    <span>Università</span>
+                </div>
+            </div>
+            <div class="project-preview">
+                <img src="gimmy-preview.jpg" alt="Gimmy — UI preview">
+            </div>
+            <div class="project-body">
+                <p class="project-desc">Prototipo UI/UX di applicazione mobile e sito web con assistente AI per il fitness personalizzato. Progetto universitario realizzato su Figma.</p>
+                <div class="project-tags">
+                    <div class="tags-row">
+                        <span class="tag">Figma</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">AI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-header">
+                <div class="project-logo" style="align-items:center;">
+                    <span style="color:#fff;font-size:22px;font-weight:800;letter-spacing:-0.5px;">Refic.it</span>
+                    <span class="live-badge" style="background:#A259FF;border-color:#7c3dcc;box-shadow:2px 2px 0px #7c3dcc;color:#fff;">Figma</span>
+                </div>
+                <div class="project-meta">
+                    <a href="https://www.figma.com/design/oXZVE9KkzvH3mKRXcZtc1y/Reficit-Site?node-id=0-1&t=HoTJrVV8WYD3kSAH-1" target="_blank" rel="noopener">Apri in Figma ↗</a>
+                    <span>Università</span>
+                </div>
+            </div>
+            <div class="project-preview">
+                <img src="refic-preview.jpg" alt="Refic.it — UI preview">
+            </div>
+            <div class="project-body">
+                <p class="project-desc">Prototipo UI/UX di sito web per un'azienda produttrice di dispositivi cellulari modulari. Progetto universitario realizzato su Figma.</p>
+                <div class="project-tags">
+                    <div class="tags-row">
+                        <span class="tag">Figma</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Product Design</span>
                     </div>
                 </div>
             </div>
@@ -1184,7 +1273,7 @@
 </script>
 
 <script>
-    const translations = {"it": {"nav_cosa": "Cosa faccio", "nav_progetti": "Progetti", "nav_contatti": "Contatti", "hero_badge": "Web Designer &amp; Developer", "hero_sub": "Trasformo idee in prodotti digitali, dal <span style=\"color:var(--orange)\">concept visivo</span> al <span style=\"color:var(--orange)\">codice</span>", "hero_location": "📍 San Benedetto del Tronto &nbsp;·&nbsp; disponibile ora", "quote": "Non c'è niente di più bello che dare forma a qualcosa e vederlo prendere vita.", "skills_label": "Cosa faccio", "skill1_title": "Web<br>design &amp; UI", "skill1_desc": "Figma, wireframe, mockup finale. Layout, tipografia, palette e microinterazioni che funzionano davvero.", "skill2_title": "Sviluppo<br>Web", "skill2_desc": "HTML, CSS, JavaScript. Next.js su progetti reali. Imparo velocemente nuovi framework quando serve.", "skill3_title": "Marketing<br>Digitale", "skill3_desc": "Strategie di comunicazione online, gestione campagne e misurazione KPI. So come un brand deve parlare e posizionarsi nel digitale.", "projects_label": "Progetti", "project_desc": "Reverse marketplace per il mercato del collezionismo — carte, fumetti, videogiochi. Il compratore pubblica quello che cerca, i venditori rispondono. Sviluppando MVP interamente in solo: design, frontend e backend.", "project_date": "2026 – in corso", "placeholder": "In arrivo", "cta_title": "Lavoriamo<br>insieme", "cta_sub": "Disponibile per progetti freelance e<br>opportunità in team creativi.", "footer_built": "Designed &amp; Built by Me ↗", "footer_copy": "@2026 Simone Borgiani"}, "en": {"nav_cosa": "What I do", "nav_progetti": "Projects", "nav_contatti": "Contact", "hero_badge": "Web Designer &amp; Developer", "hero_sub": "Turning ideas into digital products, from <span style=\"color:var(--orange)\">visual design</span> to <span style=\"color:var(--orange)\">code</span>", "hero_location": "📍 San Benedetto del Tronto &nbsp;·&nbsp; available now", "quote": "There's nothing better than shaping something and watching it come to life.", "skills_label": "What I do", "skill1_title": "Web<br>design &amp; UI", "skill1_desc": "Figma, wireframes, final mockups. Layouts, typography, color palettes and microinteractions that actually work.", "skill2_title": "Web<br>Development", "skill2_desc": "HTML, CSS, JavaScript. Next.js on real projects. I learn new frameworks fast when needed.", "skill3_title": "Digital<br>Marketing", "skill3_desc": "Online communication strategies, campaign management and KPI tracking. I understand how brands should communicate and position themselves.", "projects_label": "Projects", "project_desc": "Reverse marketplace for the collectibles market — cards, comics, video games. Buyers post what they're looking for, sellers respond. Building the MVP entirely solo: design, frontend and backend.", "project_date": "2026 – ongoing", "placeholder": "Coming soon", "cta_title": "Work with<br>me", "cta_sub": "Available for freelance projects and<br>opportunities in creative teams.", "footer_built": "Designed &amp; Built by Me ↗", "footer_copy": "@2026 Simone Borgiani"}};
+    const translations = {"it": {"nav_cosa": "Cosa faccio", "nav_progetti": "Progetti", "nav_contatti": "Contatti", "hero_badge": "Web Designer &amp; Developer", "hero_sub": "Trasformo idee in prodotti digitali, dal <span style=\"color:var(--orange)\">concept visivo</span> al <span style=\"color:var(--orange)\">codice</span>", "hero_location": "📍 San Benedetto del Tronto &nbsp;·&nbsp; disponibile ora", "quote": "Codice al servizio del design.", "skills_label": "Cosa faccio", "skill1_title": "Web<br>design &amp; UI", "skill1_desc": "Figma, wireframe, mockup finale. Layout, tipografia, palette e microinterazioni che funzionano davvero.", "skill2_title": "Sviluppo<br>Web", "skill2_desc": "HTML, CSS, JavaScript. Next.js su progetti reali. Imparo velocemente nuovi framework quando serve.", "skill3_title": "Marketing<br>Digitale", "skill3_desc": "Strategie di comunicazione online, gestione campagne e misurazione KPI. So come un brand deve parlare e posizionarsi nel digitale.", "projects_label": "Progetti", "project_desc": "Reverse marketplace per il mercato del collezionismo — carte, fumetti, videogiochi. Il compratore pubblica quello che cerca, i venditori rispondono. Sviluppando MVP interamente in solo: design, frontend e backend.", "project_date": "2026 – in corso", "placeholder": "In arrivo", "project2_desc": "Sito web aziendale per Adriatica Montaggio Arredi, impresa specializzata nel montaggio professionale di mobili e arredi. Design, sviluppo e ottimizzazione SEO.", "project2_date": "2026", "badge_wip": "in lavorazione", "cta_title": "Lavoriamo<br>insieme", "cta_sub": "Disponibile per progetti freelance e<br>opportunità in team creativi.", "footer_built": "Designed &amp; Built by Me ↗", "footer_copy": "@2026 Simone Borgiani"}, "en": {"nav_cosa": "What I do", "nav_progetti": "Projects", "nav_contatti": "Contact", "hero_badge": "Web Designer &amp; Developer", "hero_sub": "Turning ideas into digital products, from <span style=\"color:var(--orange)\">visual design</span> to <span style=\"color:var(--orange)\">code</span>", "hero_location": "📍 San Benedetto del Tronto &nbsp;·&nbsp; available now", "quote": "Code in service of design.", "skills_label": "What I do", "skill1_title": "Web<br>design &amp; UI", "skill1_desc": "Figma, wireframes, final mockups. Layouts, typography, color palettes and microinteractions that actually work.", "skill2_title": "Web<br>Development", "skill2_desc": "HTML, CSS, JavaScript. Next.js on real projects. I learn new frameworks fast when needed.", "skill3_title": "Digital<br>Marketing", "skill3_desc": "Online communication strategies, campaign management and KPI tracking. I understand how brands should communicate and position themselves.", "projects_label": "Projects", "project_desc": "Reverse marketplace for the collectibles market — cards, comics, video games. Buyers post what they're looking for, sellers respond. Building the MVP entirely solo: design, frontend and backend.", "project_date": "2026 – ongoing", "placeholder": "Coming soon", "project2_desc": "Business website for Adriatica Montaggio Arredi, a company specialised in professional furniture assembly. Design, development and SEO optimisation.", "project2_date": "2026", "badge_wip": "in progress", "cta_title": "Work with<br>me", "cta_sub": "Available for freelance projects and<br>opportunities in creative teams.", "footer_built": "Designed &amp; Built by Me ↗", "footer_copy": "@2026 Simone Borgiani"}};
     const langToggle = document.getElementById('langToggle');
     let currentLang = localStorage.getItem('lang') || 'it';
 
